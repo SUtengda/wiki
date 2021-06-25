@@ -1,7 +1,8 @@
 package com.tengda.wiki.controller;
 
-import com.tengda.wiki.domain.Ebook;
+import com.tengda.wiki.req.EbookReq;
 import com.tengda.wiki.resp.CommonResp;
+import com.tengda.wiki.resp.EbookResp;
 import com.tengda.wiki.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +22,9 @@ public class EbookController {
 //    return ebookService.list();
 //  }
   @GetMapping ("/list")
-  public CommonResp list() {
-    CommonResp<List<Ebook>>  resp = new CommonResp<>();
-    List<Ebook> list = ebookService.list();
+  public CommonResp list(EbookReq req) {
+    CommonResp<List<EbookResp>>  resp = new CommonResp<>();
+    List<EbookResp> list = ebookService.list(req);
     resp.setContent(list);
     return resp;
   }
